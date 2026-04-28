@@ -1,65 +1,127 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
+
+import Img from "@/public/assets/Home-Page-c.webp";
+import {
+  buttonMotion,
+  fadeUp,
+  heroContainer,
+} from "@/components/animations/motionVariants";
+import PrimaryButton from "@/components/ui/PrimaryButton";
+import StructureDocuments from "@/components/screens/home/StructureDocuments";
+import ExecutionGap from "@/components/screens/home/ExecutionGap";
+import ContinuityFramework from "@/components/screens/home/ContinuityFramework";
+import Positioning from "@/components/screens/home/Positioning";
+// import CoreCapablity from "@/components/screens/CoreCapability";
+import GoverFramework from "@/components/screens/home/Government";
+import GovernanceOutcome from "@/components/screens/home/GovernanceOutcome";
+import WhoServe from "@/components/screens/home/WhoServe";
+import FlagshipCaseStudy from "@/components/screens/home/FlagShip";
+import HomepageAudienceSections from "@/components/screens/home/Audience";
+import CtaBanner from "@/components/screens/home/CTA";
+
+export default function ClaimScopeLanding() {
+  const router = useRouter();
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <>
+   <section className="relative min-h-screen w-full overflow-hidden">
+      <motion.div
+        initial={{ scale: 1.1 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 6, ease: "easeOut" }}
+        className="absolute inset-0"
+      >
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
+          src={Img}
+          alt="ClaimScope Consulting hero background"
           priority
+          fill
+          className="object-cover"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </motion.div>
+
+      <div className="absolute inset-0 bg-black/45" />
+
+      <div className="relative z-10 flex min-h-screen items-center justify-center px-2 py-26 sm:px-6 lg:px-8">
+        <motion.div
+          variants={heroContainer}
+          initial="hidden"
+          animate="visible"
+          className="mx-auto max-w-6xl text-center"
+        >
+     <motion.h1
+            variants={fadeUp}
+            className="mt-10 md:mt-4 mx-auto max-w-6xl mb-6 text-3xl font-bold leading-tight tracking-wide text-orange-600 sm:text-5xl md:mb-4 md:text-5xl lg:text-6xl"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            ClaimScope
+            <span className="align-super text-lg sm:text-xl md:text-2xl text-[#ff6f00]">
+              ™
+            </span>
+            <span className="block mt-4 text-2xl sm:text-2xl md:text-5xl lg:text-6xl font-semibold text-white">
+             You Don’t Have a Documentation Problem. You Have a Structure Problem
+            </span>
+    
+          </motion.h1>
+
+        <motion.p
+            variants={fadeUp}
+            className="mx-auto max-w-5xl px-2 text-base font-medium tracking-wide text-white/90 sm:text-lg md:text-xl lg:text-xl"
           >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+            ClaimScope
+            <span className="align-super text-xs sm:text-sm text-white/80">
+              ™
+            </span>{" "}
+           is a structured documentation governance system designed to align records, workflows, and execution across complex operational environments
+          </motion.p>
+
+          <motion.div
+            variants={fadeUp}
+             className="flex flex-col justify-center gap-4 pt-8 sm:flex-row sm:pt-10"
+          >
+            <PrimaryButton onClick={() => router.push("/schedule")}>
+              Schedule Consultation
+            </PrimaryButton>
+
+            <PrimaryButton
+              variant="secondary"
+              onClick={() => router.push("/solutions")}
+            >
+              Explore the Framework
+            </PrimaryButton>
+          </motion.div>
+
+          <motion.div
+            variants={fadeUp}
+            className="mx-auto mt-6 max-w-3xl md:mt-4"
+          >
+            <div className="inline-block rounded-lg border border-[#ff6f00]/20 bg-black/20 px-4 py-3 backdrop-blur-[2px]">
+              <p className="text-sm font-light tracking-wide text-white/95 sm:text-base">
+                Advisory-only.{" "}
+                <span className="font-medium text-[#ff6f00]">
+                  No claim negotiation,
+                </span>{" "}
+                representation, or third-party communication.
+              </p>
+            </div>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+     <StructureDocuments />
+        <ExecutionGap />
+        <ContinuityFramework />
+        <Positioning />
+        <GoverFramework />
+        <GovernanceOutcome />
+        <WhoServe />
+        <FlagshipCaseStudy />
+        <HomepageAudienceSections />
+        <CtaBanner />
+    </>
+ 
   );
 }
