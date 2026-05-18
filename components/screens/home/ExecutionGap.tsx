@@ -1,85 +1,22 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-import Exegap from "@/public/assets/exe-gap.png"; 
+import Exegap from "@/public/assets/exe-gap.png";
 
-const steps = [
-  {
-    label: "WRITTEN",
-    sub: "Scope | Contract\nAssumptions",
-    color: "text-blue-900",
-    border: "border-blue-900",
-  },
-  {
-    label: "TRACKED",
-    sub: "Logs | Reporting\nProgress",
-    color: "text-blue-900",
-    border: "border-blue-900",
-  },
-  {
-    label: "FIELD EXECUTION",
-    sub: "Actual Work | Actual Output",
-    color: "text-green-600",
-    border: "border-green-600",
-  },
-];
-
-function Arrow({ dashed, isGap, vertical = false }: any) {
-  const strokeColor = isGap ? "#ef4444" : "#9ca3af";
-  const arrowColor = isGap ? "text-red-600" : "text-blue-900";
-
-  if (vertical) {
-    return (
-      <div className="flex justify-center -mb-2">
-        <svg width="32" height="75" viewBox="0 0 32 75" fill="none">
-          <line
-            x1="16"
-            y1="0"
-            x2="16"
-            y2="52"
-            stroke={strokeColor}
-            strokeWidth="4.5"
-            strokeDasharray={dashed ? "8 4" : "none"}
-          />
-          <polygon
-            points="16,52 8,34 24,34"
-            fill="currentColor"
-            className={arrowColor}
-          />
-        </svg>
-      </div>
-    );
+function pushDataLayer(payload: Record<string, unknown>) {
+  if (typeof window === "undefined") {
+    return;
   }
 
-  return (
-    <div className="flex items-center justify-center lg:mx-4 my-6 lg:my-0">
-      <svg
-        width="85"
-        height="85"
-        viewBox="0 0 85 85"
-        fill="none"
-        className="rotate-90 lg:rotate-0"
-      >
-        <line
-          x1="10"
-          y1="42.5"
-          x2={dashed ? "52" : "60"}
-          y2="42.5"
-          stroke={strokeColor}
-          strokeWidth="4.5"
-          strokeDasharray={dashed ? "8 4" : "none"}
-        />
-        <polygon
-          points="60,32 78,42.5 60,53"
-          fill="currentColor"
-          className={arrowColor}
-        />
-      </svg>
-    </div>
-  );
+  const windowWithDataLayer = window as Window & {
+    dataLayer?: Record<string, unknown>[];
+  };
+
+  windowWithDataLayer.dataLayer = windowWithDataLayer.dataLayer || [];
+  windowWithDataLayer.dataLayer.push(payload);
 }
 
 export default function ExecutionGap() {
@@ -87,61 +24,61 @@ export default function ExecutionGap() {
   const router = useRouter();
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 100);
-    return () => clearTimeout(t);
+    const timer = window.setTimeout(() => setVisible(true), 100);
+    return () => window.clearTimeout(timer);
   }, []);
 
   return (
-    <div className="bg-[#F1F4F8] py-8 md:py-16 px-6 flex flex-col items-center">
-      
-      {/* Heading */}
+    <div className="flex flex-col items-center bg-white px-6 py-6 md:py-10">
       <div
-        className={`text-center mb-6 transition-all duration-700 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+        className={`mb-2 text-center transition-all duration-700 ${
+          visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
         }`}
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-black">
-          The Execution Gap: Where Performance Breaks Down
+        <h2 className="py-4 text-3xl font-bold text-[#1a237e] md:text-4xl">
+          Where Documentation Breaks Down
         </h2>
       </div>
 
-      {/* Description */}
-      <div className="mt-2 max-w-7xl text-center px-2 md:px-4">
+      <div className="mt-1 max-w-7xl px-2 text-center md:px-4">
         <p className="text-xl text-gray-700">
-          Most organizations do not struggle because of what is written. They
-          struggle because documentation is not consistently carried from scope
-          to execution
+          Most organizations do not struggle because documentation is missing.
+        </p>
+        <p className="text-xl text-gray-700">
+          They struggle because documentation is not consistently carried from
+          scope to execution.
         </p>
       </div>
 
-      {/* Highlight */}
-      <div className="mt-8 text-center max-w-7xl">
-        <p className="text-lg md:text-xl font-semibold text-orange-600">
-          This is where documentation fails! Not at intake, but between tracking
-          and execution
+      <div className="mt-4 max-w-7xl text-center">
+        <p className="text-lg font-semibold text-orange-600 md:text-xl">
+          Documentation fails between tracking and execution, not at intake.
         </p>
       </div>
 
-      {/* Image */}
-      <div className="mt-6 w-full max-w-6xl flex justify-center">
+      <div className="mt-6 flex w-full max-w-6xl justify-center">
         <Image
           src={Exegap}
           alt="Execution Gap Diagram"
-          className="w-full h-auto rounded-lg shadow-md border border-gray-200"
-          priority
+          className="h-auto w-full rounded-lg border border-gray-200 shadow-md"
         />
       </div>
 
-      {/* CTA */}
       <div className="mt-16 text-center">
         <button
+          type="button"
           onClick={() => {
+            pushDataLayer({
+              event: "cta_click",
+              cta_name:
+                "Learn More About the ClaimScope Documentation Governance Framework",
+            });
             router.push("/schedule");
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="bg-blue-900 hover:bg-blue-800 text-white font-semibold text-sm md:text-md px-6 md:px-12 py-2 md:py-4 transition-all shadow-lg hover:shadow-xl active:scale-95"
+          className="bg-blue-900 px-6 py-2 text-sm font-semibold text-white shadow-lg transition-all hover:bg-blue-800 hover:shadow-xl active:scale-95 md:px-12 md:py-6 md:text-md"
         >
-          Learn More About the ClaimScope™ Documentation Governance Framework
+          Learn More About the ClaimScope Documentation Governance Framework
         </button>
       </div>
     </div>

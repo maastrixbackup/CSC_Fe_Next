@@ -5,8 +5,6 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { Minus, Plus } from "lucide-react";
 
-import { API_URL } from "@/utils/config";
-
 type RawFaq = {
   question?: string;
   answer?: string;
@@ -118,6 +116,11 @@ export default function AllFaq() {
   const [faqError, setFaqError] = useState("");
   const router = useRouter();
 
+  const handleScheduleConsultation = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    router.push("/schedule");
+  };
+
   useEffect(() => {
     let mounted = true;
 
@@ -126,7 +129,7 @@ export default function AllFaq() {
       setFaqError("");
 
       try {
-        const response = await fetch(`${API_URL}cms/getCategoryFaq`, {
+        const response = await fetch("/api/faqs", {
           cache: "no-store",
         });
 
@@ -299,20 +302,19 @@ export default function AllFaq() {
           </p>
         </div>
 
-        <div className="mt-16 rounded-3xl bg-gradient-to-r from-gray-800 to-gray-900 p-10 text-center text-white shadow-xl">
-          <h2 className="mb-3 text-2xl font-bold md:text-3xl">
+         <div className="mt-16 bg-[#1a237e]  rounded-3xl p-10 text-center text-white shadow-xl">
+          <h2 className="text-2xl md:text-3xl font-bold mb-3">
             Still Have Questions?
           </h2>
 
-          <p className="mb-6 text-base text-blue-100 md:text-lg">
+          <p className="mb-6 text-blue-100 text-base md:text-lg">
             Our team is ready to provide clarity, structure, and confidence for
             your documentation governance and documentation readiness needs.
           </p>
 
           <button
-            type="button"
-            onClick={() => router.push("/schedule")}
-            className="transform rounded-xl bg-[#1a237e] px-12 py-4 text-lg font-semibold text-white shadow-xl transition-all duration-300 hover:-translate-y-1 hover:bg-[#0d47a1] hover:shadow-2xl"
+            onClick={handleScheduleConsultation}
+            className="bg-[#1a237e] hover:bg-[#0d47a1] text-white font-semibold px-12 py-4 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 text-lg transform hover:-translate-y-1 border-2 border-white "
           >
             Schedule Consultation
           </button>

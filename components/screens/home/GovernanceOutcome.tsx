@@ -1,84 +1,65 @@
 "use client";
 
-import React from "react";
-import { FileText, AlignLeft, CheckCircle, ShieldCheck } from "lucide-react";
+import { AlignLeft, CheckCircle, FileText } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
 import {
   fadeUp,
-  staggerContainer,
   scaleIn,
-} from "@/components/animations/motionVariants"; // adjust path if needed
+  staggerContainer,
+} from "@/components/animations/motionVariants";
 
 export default function DocumentationGovernanceOutcomes() {
   const router = useRouter();
 
   const outcomes = [
     {
-      icon: <AlignLeft className="w-8 h-8 text-blue-600" />,
-      title: "Operational Clarity",
+      icon: <AlignLeft className="h-8 w-8 text-blue-600" />,
+      title: "Operational clarity",
       description:
         "Establishes clear, structured documentation across all projects, reducing ambiguity and improving internal visibility into scope, status, and execution.",
     },
     {
-      icon: <FileText className="w-8 h-8 text-blue-600" />,
-      title: "Consistent Record Alignment",
+      icon: <FileText className="h-8 w-8 text-blue-600" />,
+      title: "Consistent record alignment",
       description:
-        "Maintains consistency between documentation, tracking, and field execution — reducing discrepancies and minimizing internal misalignment.",
+        "Maintains consistency between documentation, tracking, and field execution, reducing discrepancies and minimizing internal misalignment.",
     },
     {
-      icon: <CheckCircle className="w-8 h-8 text-blue-600" />,
-      title: "Documentation Readiness",
+      icon: <CheckCircle className="h-8 w-8 text-blue-600" />,
+      title: "Documentation readiness",
       description:
-        "Ensures documentation is structured, organized, and complete — supporting internal review, verification, and workflow efficiency.",
-    },
-    {
-      icon: <ShieldCheck className="w-8 h-8 text-blue-600" />,
-      title: "Governance Continuity",
-      description:
-        "Preserves documentation structure and alignment across the full lifecycle of a project — enabling scalability without loss of consistency.",
+        "Ensures documentation is structured, organized, and complete, supporting internal review, verification, and workflow efficiency.",
     },
   ];
 
   return (
     <motion.section
-      className="w-full py-20 bg-white"
+      className="mt-10 mb-8 w-full bg-white py-1"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       variants={staggerContainer}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-4">
-
-        {/* Header */}
+      <div className="mx-auto max-w-7xl px-6 md:px-4">
         <motion.div
-          className="text-center max-w-7xl mx-auto mb-14"
+          className="mx-auto mb-8 max-w-7xl text-center"
           variants={fadeUp}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Operational Outcomes of Structured Documentation Governance
+          <h2 className="text-3xl font-bold leading-tight tracking-tight text-[#1a237e] md:text-4xl">
+            Operational Outcomes
           </h2>
-
-          <p className="text-2xl md:text-3xl font-semibold text-slate-900 mb-6">
-            When documentation is structured, operations stop guessing.
-          </p>
-
-          <p className="text-slate-600 text-lg leading-relaxed">
-            When documentation is governed — not just managed — operational clarity replaces uncertainty, and consistency replaces variability.
-            ClaimScope™ establishes a structured documentation environment that supports alignment across teams, workflows, and project lifecycles — enabling organizations to operate with greater confidence, control, and continuity.
-          </p>
         </motion.div>
 
-        {/* Grid */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3"
           variants={staggerContainer}
         >
-          {outcomes.map((item, index) => (
+          {outcomes.map((item) => (
             <motion.div
-              key={index}
-              className="bg-slate-50 border-4 border-blue-600 rounded-xl p-6 hover:shadow-lg transition-shadow duration-300"
+              key={item.title}
+              className="rounded-xl border-4 border-blue-600 bg-slate-50 p-6 transition-shadow duration-300 hover:shadow-lg"
               variants={scaleIn}
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
@@ -91,28 +72,25 @@ export default function DocumentationGovernanceOutcomes() {
                 {item.icon}
               </motion.div>
 
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">
+              <h3 className="mb-2 text-lg font-semibold text-slate-900">
                 {item.title}
               </h3>
 
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className="text-sm leading-relaxed text-slate-600">
                 {item.description}
               </p>
             </motion.div>
           ))}
         </motion.div>
 
-        {/* CTA */}
-        <motion.div
-          className="text-center mt-14"
-          variants={fadeUp}
-        >
+        <motion.div className="mt-14 text-center" variants={fadeUp}>
           <motion.button
+            type="button"
             onClick={() => {
               router.push("/schedule");
-              window.scrollTo(0, 0);
+              window.scrollTo({ top: 0, behavior: "smooth" });
             }}
-            className="px-12 py-4 bg-[#1a237e] hover:bg-[#0d47a1] text-white font-medium transition-colors duration-300"
+            className="bg-[#1a237e] px-12 py-4 font-medium text-white transition-colors duration-300 hover:bg-[#0d47a1] md:py-6"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             transition={{ duration: 0.2 }}
@@ -120,7 +98,6 @@ export default function DocumentationGovernanceOutcomes() {
             Schedule a Consultation
           </motion.button>
         </motion.div>
-
       </div>
     </motion.section>
   );

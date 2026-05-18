@@ -1,16 +1,102 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import { useRouter } from "next/navigation";
 
-import Continuity from "@/public/assets/continuoty.png"; // adjust path if needed
+function pushDataLayer(payload: Record<string, unknown>) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const windowWithDataLayer = window as Window & {
+    dataLayer?: Record<string, unknown>[];
+  };
+
+  windowWithDataLayer.dataLayer = windowWithDataLayer.dataLayer || [];
+  windowWithDataLayer.dataLayer.push(payload);
+}
 
 const frameworkSteps = [
-  "Intake and Defined Scope",
-  "Input and Assumption Validation",
-  "Field Execution Alignment",
-  "Continuous Revalidation",
+  {
+    step: 1,
+    title: "Defined Scope",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-7 w-7"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+        />
+      </svg>
+    ),
+  },
+  {
+    step: 2,
+    title: "Assumption Validation",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-7 w-7"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+        />
+      </svg>
+    ),
+  },
+  {
+    step: 3,
+    title: "Execution Alignment",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-7 w-7"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M13 10V3L4 14h7v7l9-11h-7z"
+        />
+      </svg>
+    ),
+  },
+  {
+    step: 4,
+    title: "Continuous Revalidation",
+    icon: (
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        className="h-7 w-7"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={1.8}
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+        />
+      </svg>
+    ),
+  },
 ];
 
 export default function ContinuityFramework() {
@@ -18,111 +104,84 @@ export default function ContinuityFramework() {
   const router = useRouter();
 
   useEffect(() => {
-    const timer = setTimeout(() => setVisible(true), 100);
-    return () => clearTimeout(timer);
+    const timer = window.setTimeout(() => setVisible(true), 100);
+    return () => window.clearTimeout(timer);
   }, []);
 
   return (
-    <div className="bg-white py-8 md:py-16 px-4 md:px-6 flex flex-col items-center">
-      
-      {/* Header */}
+    <section className="relative overflow-hidden bg-white px-4 py-8 md:px-6 md:py-12">
       <div
-        className={`text-center mb-8 md:mb-10 transition-all duration-700 ${
-          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
-        }`}
-      >
-        <h2 className="text-3xl md:text-4xl font-bold text-black">
-          The ClaimScope™ Continuity Framework
-        </h2>
-        <p className="mt-4 text-lg md:text-xl text-gray-600 max-w-7xl mx-auto">
-          A structured governance system designed to ensure documentation
-          remains aligned from intake through execution.
-        </p>
-      </div>
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 70% 40% at 50% 0%, rgba(30,58,138,0.06) 0%, transparent 70%)",
+        }}
+      />
 
-      {/* Content */}
-      <div className="max-w-7xl text-center px-2">
-        
-        {/* Emphasis */}
-        <div className="mb-8 md:mb-12 px-4">
-          <p className="text-xl md:text-2xl font-bold text-blue-900 leading-relaxed">
-            The ClaimScope™ Continuity Framework is the control system behind structured documentation governance.
-          </p>
-        </div>
-
-        {/* Subline */}
-        <div className="mb-6 px-4">
-          <p className="text-lg md:text-xl font-semibold text-orange-600">
-            Control is not created at intake. It is validated through continuity.
-          </p>
-        </div>
-
-        {/* Steps */}
-        <div className="mt-8 bg-gray-50 border border-gray-200 rounded-2xl p-8 md:p-10">
-          <h3 className="font-semibold text-xl text-gray-800 mb-6">
-            Framework Flow
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 md:gap-6">
-            {frameworkSteps.map((step, index) => (
-              <div
-                key={index}
-                className="flex flex-col items-center gap-4 bg-white border-4 border-blue-600 
-                rounded-xl p-6 shadow-sm hover:shadow transition-all text-center"
-              >
-                <div className="w-10 h-10 rounded-full bg-blue-900 text-white flex items-center justify-center font-semibold text-base">
-                  {index + 1}
-                </div>
-
-                <h4 className="text-lg font-semibold text-gray-800">
-                  Step {index + 1}
-                </h4>
-
-                <p className="text-gray-700 text-base leading-relaxed">
-                  {step}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Footer Note */}
-          <div className="mt-10 pt-8 border-t border-gray-200">
-            <p className="text-lg text-gray-700 leading-relaxed font-medium">
-              This system ensures documentation is not only created, but
-              <span className="text-blue-900 font-semibold">
-                {" "}maintained, validated, and aligned{" "}
-              </span>
-              throughout the entire lifecycle.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      {/* Image */}
-      <div className="mt-12 w-full max-w-6xl flex justify-center">
-        <Image
-          src={Continuity}
-          alt="ClaimScope Continuity Framework Diagram"
-          className="w-full h-auto rounded-2xl shadow-lg border border-gray-100"
-          priority
-        />
-      </div>
-
-      {/* CTA */}
-      <div className="mt-16 text-center">
-        <button
-          onClick={() => {
-            router.push("/schedule");
-            window.scrollTo({ top: 0, behavior: "smooth" });
-          }}
-          className="bg-blue-900 hover:bg-blue-800 active:bg-blue-950 
-          text-white font-semibold text-base md:text-md 
-          px-8 md:px-14 py-4 
-          transition-all duration-200 shadow-lg hover:shadow-2xl active:scale-[0.97]"
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center">
+        <div
+          className={`mb-12 text-center transition-all duration-700 ${
+            visible ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
         >
-          Learn More About the ClaimScope™ Documentation Governance Framework
-        </button>
+          <span className="mb-4 inline-block rounded-full border border-blue-200 bg-blue-50 px-4 py-1.5 text-xs font-semibold uppercase tracking-widest text-blue-800">
+            Our Methodology
+          </span>
+          <h2 className="text-3xl font-bold leading-tight text-gray-900 md:text-3xl lg:text-4xl">
+            The ClaimScope <span className="text-blue-900">Continuity Framework</span>
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-gray-500 md:text-lg">
+            A structured system designed to ensure documentation remains aligned
+            from intake through execution.
+          </p>
+        </div>
+
+        <div className="grid w-full grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {frameworkSteps.map((item, index) => (
+            <div
+              key={item.step}
+              className={`group relative flex flex-col items-center rounded-2xl border-4 border-blue-600 bg-white px-6 py-8 text-center shadow-sm transition-all duration-500 hover:bg-blue-50 hover:shadow-md ${
+                visible ? "translate-y-0 opacity-100" : "translate-y-8 opacity-0"
+              }`}
+              style={{ transitionDelay: `${100 + index * 100}ms` }}
+            >
+              <div className="absolute -top-3 -left-3 flex h-7 w-7 items-center justify-center rounded-full bg-blue-900 text-xs font-bold text-white shadow">
+                {item.step}
+              </div>
+
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 text-blue-800 transition-colors duration-300 group-hover:bg-blue-900 group-hover:text-white">
+                {item.icon}
+              </div>
+
+              <h3 className="text-base font-semibold leading-snug text-gray-900">
+                {item.title}
+              </h3>
+            </div>
+          ))}
+        </div>
+
+        <div
+          className={`mt-12 transition-all delay-500 duration-700 ${
+            visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+          }`}
+        >
+          <button
+            type="button"
+            onClick={() => {
+              pushDataLayer({
+                event: "cta_click",
+                cta_name: "View Full Framework",
+              });
+              router.push("/schedule");
+              window.scrollTo({ top: 0, behavior: "smooth" });
+            }}
+            className="group inline-flex items-center gap-3 bg-blue-900 px-10 py-5 text-base font-semibold tracking-wide text-white shadow-lg transition-all duration-200 hover:bg-blue-800 hover:shadow-xl active:scale-[0.97] active:bg-blue-950 md:text-lg"
+          >
+            View Full Framework
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }

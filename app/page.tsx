@@ -11,7 +11,6 @@ import {
   heroContainer,
 } from "@/components/animations/motionVariants";
 import PrimaryButton from "@/components/ui/PrimaryButton";
-import StructureDocuments from "@/components/screens/home/StructureDocuments";
 import ExecutionGap from "@/components/screens/home/ExecutionGap";
 import ContinuityFramework from "@/components/screens/home/ContinuityFramework";
 import Positioning from "@/components/screens/home/Positioning";
@@ -19,8 +18,7 @@ import Positioning from "@/components/screens/home/Positioning";
 import GoverFramework from "@/components/screens/home/Government";
 import GovernanceOutcome from "@/components/screens/home/GovernanceOutcome";
 import WhoServe from "@/components/screens/home/WhoServe";
-import FlagshipCaseStudy from "@/components/screens/home/FlagShip";
-import HomepageAudienceSections from "@/components/screens/home/Audience";
+import Filter from "@/components/screens/home/Filter";
 import CtaBanner from "@/components/screens/home/CTA";
 
 export default function ClaimScopeLanding() {
@@ -111,15 +109,15 @@ export default function ClaimScopeLanding() {
         </motion.div>
       </div>
     </section>
-     <StructureDocuments />
+
         <ExecutionGap />
-        <ContinuityFramework />
-        <Positioning />
+        <Positioning /> 
         <GoverFramework />
-        <GovernanceOutcome />
+         <ContinuityFramework />
+        
         <WhoServe />
-        <FlagshipCaseStudy />
-        <HomepageAudienceSections />
+        <GovernanceOutcome />
+<Filter />
         <CtaBanner />
     </>
  

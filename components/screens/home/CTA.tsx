@@ -1,78 +1,107 @@
 "use client";
 
-import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 
-import img from "@/public/assets/cta.jpg"; // adjust if using /public
+import img from "@/public/assets/cta.jpg";
 import {
+  buttonMotion,
   slideLeft,
   slideRight,
   staggerContainer,
-  buttonMotion,
 } from "@/components/animations/motionVariants";
+
+type CtaBannerProps = {
+  title?: string;
+  body?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+  compliance?: string;
+  subheading?: string;
+};
+
+function pushDataLayer(payload: Record<string, unknown>) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  const windowWithDataLayer = window as Window & {
+    dataLayer?: Record<string, unknown>[];
+  };
+
+  windowWithDataLayer.dataLayer = windowWithDataLayer.dataLayer || [];
+  windowWithDataLayer.dataLayer.push(payload);
+}
 
 const CtaBanner = ({
   title = "Move from Fragmented Documentation to Controlled Operations",
   body = "If your organization is ready to implement structured documentation governance and improve consistency across operations, the next step is a structured consultation.",
-  ctaLabel = "Explore the Framework",
+  ctaLabel = "Start with a Structured Documentation Assessment",
   ctaHref = "/schedule",
   compliance = "Advisory-only. No third-party communication, representation, or claim handling.",
   subheading = "Start with a structured documentation assessment",
-}) => {
+}: CtaBannerProps) => {
   const router = useRouter();
 
   const handleCTA = () => {
-    window.scrollTo(0, 0);
+    pushDataLayer({
+      event: "cta_click",
+      cta_label: "structured_consultation",
+      cta_location: "home_cta_banner",
+      cta_destination: ctaHref,
+    });
+
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     router.push(ctaHref);
   };
 
   return (
     <section
-      className="py-16 md:py-24 px-4 sm:px-6 md:px-8 lg:px-16 w-full overflow-hidden mb-6"
+      className="relative w-full overflow-hidden px-4 py-16 md:px-6 md:py-24 lg:px-16"
       style={{
         background:
           "linear-gradient(135deg, #1C2F5C 0%, #162448 60%, #0f1a35 100%)",
       }}
     >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.04]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+
       <motion.div
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
-        className="max-w-7xl mx-auto w-full"
+        className="relative mx-auto w-full max-w-7xl"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center">
-
-          {/* LEFT CONTENT */}
+        <div className="grid grid-cols-1 items-center gap-8 md:grid-cols-2 lg:gap-12">
           <motion.div
             variants={slideLeft}
-            className="text-white space-y-6 sm:space-y-8"
+            className="space-y-6 text-white sm:space-y-8"
           >
-            <h2 className="text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-bold leading-tight text-white drop-shadow-sm">
+            <h2 className="text-3xl font-bold leading-tight text-white drop-shadow-sm sm:text-4xl md:text-4xl lg:text-5xl">
               {title}
             </h2>
 
-            <div
-              className="space-y-4 text-base sm:text-lg leading-relaxed"
-              style={{ color: "rgba(255,255,255,0.85)" }}
-            >
+            <div className="space-y-4 text-base leading-relaxed text-white/85 sm:text-lg">
               <p>{body}</p>
             </div>
 
-            <p
-              className="text-sm sm:text-base font-semibold tracking-wide uppercase"
-              style={{ color: "#7EB3FF", letterSpacing: "0.08em" }}
-            >
+            <p className="text-sm font-semibold uppercase tracking-[0.08em] text-[#7EB3FF] sm:text-base">
               {subheading}
             </p>
 
-            {/* CTA */}
             <motion.button
               {...buttonMotion}
               onClick={handleCTA}
-              className="relative group font-bold text-base sm:text-md rounded-xl w-full md:w-auto transition-all duration-300"
+              className="group relative w-full rounded-xl text-base font-bold transition-all duration-300 md:w-auto sm:text-md"
               style={{
                 background: "#1a237e",
                 color: "#fff",
@@ -96,7 +125,6 @@ const CtaBanner = ({
               {ctaLabel}
             </motion.button>
 
-            {/* Compliance */}
             <div
               className="rounded-lg px-6 py-4 sm:px-8 sm:py-5"
               style={{
@@ -105,22 +133,18 @@ const CtaBanner = ({
                 backdropFilter: "blur(8px)",
               }}
             >
-              <p
-                className="text-xs sm:text-sm italic"
-                style={{ color: "rgba(255,255,255,0.55)" }}
-              >
+              <p className="text-xs italic text-white/55 sm:text-sm">
                 {compliance}
               </p>
             </div>
           </motion.div>
 
-          {/* RIGHT IMAGE */}
           <motion.div
             variants={slideRight}
-            className="flex justify-center md:justify-end w-full"
+            className="flex w-full justify-center md:justify-end"
           >
             <div
-              className="w-full max-w-md md:max-w-none overflow-hidden rounded-xl relative"
+              className="relative w-full max-w-md overflow-hidden rounded-xl md:max-w-none"
               style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.45)" }}
             >
               <motion.div
@@ -132,13 +156,12 @@ const CtaBanner = ({
                 <Image
                   src={img}
                   alt="Move from Fragmented Documentation to Structured Execution"
-                  className="w-full h-48 sm:h-56 md:h-80 lg:h-96 object-cover"
+                  className="h-48 w-full object-cover sm:h-56 md:h-80 lg:h-96"
                   priority
                 />
               </motion.div>
             </div>
           </motion.div>
-
         </div>
       </motion.div>
     </section>

@@ -15,7 +15,6 @@ import {
   staggerContainer,
   staggerFast,
 } from "@/components/animations/motionVariants";
-import { API_URL } from "@/utils/config";
 
 type RawTrackPlan = {
   id?: number | string;
@@ -158,7 +157,7 @@ export default function PricingSection() {
         setTracksError("");
         setIsLoadingTracks(true);
 
-        const response = await fetch(`${API_URL}pricing/all-tracks`, {
+        const response = await fetch("/api/pricing/all-tracks", {
           signal: controller.signal,
         });
         if (!response.ok) {
@@ -449,7 +448,7 @@ export default function PricingSection() {
           <CtaBanner
             title="Move from documentation drift to structured advisory control"
             body="If your organization is ready to implement structured documentation governance and improve consistency across operations, the next step is a consultation."
-            ctaLabel="Schedule Consultation"
+            ctaLabel="Start with a Structured Documentation Assessment"
             ctaHref="/contact"
             subheading="Start with a structured documentation assessment"
             compliance="Advisory-only. No third-party communication, representation, or claim handling."

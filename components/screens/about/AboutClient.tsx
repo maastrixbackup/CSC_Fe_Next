@@ -392,23 +392,19 @@ export default function About() {
             </div>
 
             {/* Compliance Footer */}
-            <motion.section
-                variants={fadeUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-gray-900 text-gray-300 py-10 px-6"
-            >
-                <div className="max-w-4xl mx-auto text-sm text-center leading-relaxed">
-                    <p>
-                        ClaimScope Consulting, LLC operates strictly in a consulting‑only
-                        capacity. The firm provides documentation governance advisory and
-                        disaster documentation readiness education and does not provide
-                        claim negotiation, representation of any party, advocacy services,
-                        legal advice, or third‑party communications on behalf of clients.
-                    </p>
-                </div>
-            </motion.section>
+  
+                <div className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="mt-8 rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 px-6 py-6 text-sm text-amber-900">
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:gap-3">
+           
+            <span className="w-full leading-relaxed">
+           ClaimScope Consulting, LLC operates strictly in a consulting‑only capacity. The firm provides documentation governance advisory and disaster documentation readiness education and does not provide claim negotiation, representation of any party, advocacy services, legal advice, or third‑party communications on behalf of clients.
+
+            </span>
+          </div>
+        </div>
+      </div>
+           
         </div>
     );
 }

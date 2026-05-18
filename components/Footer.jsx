@@ -2,13 +2,16 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
 
 import Logo from "@/public/assets/bg-remove.png";
-import { fadeIn, fadeUp, staggerContainer } from "./animations/motionVariants";
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
+import {
+  fadeIn,
+  fadeUp,
+  staggerContainer,
+} from "@/components/animations/motionVariants";
 
 const fallbackRegions = [
   "Alabama",
@@ -18,6 +21,15 @@ const fallbackRegions = [
   "Mississippi",
   "Tennessee",
 ];
+
+function pushDataLayer(payload) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(payload);
+}
 
 const normalizeRegionList = (res) => {
   const rows = Array.isArray(res)
@@ -47,30 +59,25 @@ const normalizeRegionList = (res) => {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const router = useRouter();
   const [advisoryRegions, setAdvisoryRegions] = useState([]);
 
   useEffect(() => {
-    if (!API_URL) return;
-
     let mounted = true;
 
     const loadRegions = async () => {
-      const endpoints = [`${API_URL}cms/region/`, `${API_URL}cms/region/all`];
+      try {
+        const response = await fetch("/api/regions");
+        if (!response.ok) return;
 
-      for (const url of endpoints) {
-        try {
-          const response = await fetch(url);
-          if (!response.ok) continue;
+        const json = await response.json();
+        const normalized = normalizeRegionList(json);
+        if (!normalized.length) return;
 
-          const normalized = normalizeRegionList(await response.json());
-          if (!normalized.length) continue;
-
-          if (mounted) setAdvisoryRegions(normalized);
-          return;
-        } catch {
-          // Try the next endpoint and keep the fallback regions if all fail.
+        if (mounted) {
+          setAdvisoryRegions(normalized);
         }
+      } catch {
+        // Keep footer fallback regions if the proxy route fails.
       }
     };
 
@@ -81,31 +88,38 @@ const Footer = () => {
     };
   }, []);
 
-  const handleNavigation = (href) => {
+  const handleLinkClick = (href) => {
     if (!href || href === "#") return;
-    router.push(href);
-    window.scrollTo(0, 0);
+
+    if (href.startsWith("/solutions/")) {
+      const slug = href.replace("/solutions/", "");
+      pushDataLayer({
+        event: "service_page_view",
+        service_slug: slug,
+        page_path: href,
+      });
+    }
   };
 
   const serviceLinks = [
     {
       name: "Contractor Documentation Support",
-      href: "/service/contractor-documentation-support",
+      href: "/solutions/contractor-tracks",
     },
     {
       name: "Real Estate & REO Documentation",
-      href: "/service/real-estate-reo-documentation-readiness",
+      href: "/solutions/reo-tracks",
     },
     {
       name: "Disaster Documentation & FEMA Education",
-      href: "/service/disaster-documentation-readiness-fema-education",
+      href: "/solutions/disaster",
     },
   ];
 
   const companyLinks = [
     { name: "About Us", href: "/about" },
     { name: "Pricing", href: "/pricing" },
-    { name: "States We Serve", href: "/" },
+    { name: "States We Serve", href: "/documentation-readiness" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
   ];
@@ -124,9 +138,10 @@ const Footer = () => {
       ? advisoryRegions.map((region) => region.region_name)
       : fallbackRegions;
 
-    return regions.map((region) => ({
+    return regions.map((region, index) => ({
+      id: `${region}-${index}`,
       name: region,
-      href: `/government-documentation-readiness/${encodeURIComponent(region)}`,
+      href: `/documentation-readiness?region=${encodeURIComponent(region)}`,
     }));
   }, [advisoryRegions]);
 
@@ -142,7 +157,7 @@ const Footer = () => {
       whileInView="visible"
       viewport={{ once: true }}
       variants={fadeUp}
-      className="bg-slate-900 text-slate-300"
+      className="bg-[#1E2E66] text-white"
     >
       <div className="h-[3px] w-full bg-orange-500" />
 
@@ -161,7 +176,8 @@ const Footer = () => {
               <Image
                 src={Logo}
                 alt="ClaimScope Consulting Logo"
-                className="mr-3 h-auto w-[320px] object-contain md:w-full"
+                className="mr-3 h-[220px] w-[320px] object-contain md:h-auto md:w-full"
+                priority={false}
               />
             </motion.div>
 
@@ -175,7 +191,7 @@ const Footer = () => {
                 href="mailto:contact@claimscopeconsulting.com"
                 className="flex items-center text-sm transition-colors hover:text-slate-100"
               >
-                <span className="mr-2 text-slate-500">@</span>
+                <Mail className="mr-2 h-4 w-4 text-slate-500" />
                 contact@claimscopeconsulting.com
               </a>
 
@@ -183,7 +199,7 @@ const Footer = () => {
                 href="tel:+12562127273"
                 className="flex items-center text-sm transition-colors hover:text-slate-100"
               >
-                <span className="mr-2 text-slate-500">Tel</span>
+                <Phone className="mr-2 h-4 w-4 text-slate-500" />
                 +1 (256) 212-7273
               </a>
             </div>
@@ -197,18 +213,25 @@ const Footer = () => {
 
               <ul className="space-y-2">
                 {section.links.map((link) => (
-                  <li key={link.name}>
+                  <li key={link.id || link.name}>
                     <motion.div
                       whileHover={{ x: link.href && link.href !== "#" ? 4 : 0 }}
                       transition={{ duration: 0.2 }}
                     >
-                      <button
-                        type="button"
-                        onClick={() => handleNavigation(link.href)}
-                        className="text-left text-sm transition-colors hover:text-white"
-                      >
-                        {link.name}
-                      </button>
+                      {link.href && link.href !== "#" ? (
+                        <Link
+                          href={link.href}
+                          onClick={() => handleLinkClick(link.href)}
+                          className="inline-flex items-center gap-1 text-left text-sm transition-colors hover:text-white"
+                        >
+                          <span>{link.name}</span>
+                        
+                        </Link>
+                      ) : (
+                        <span className="text-sm text-slate-300">
+                          {link.name}
+                        </span>
+                      )}
                     </motion.div>
                   </li>
                 ))}
@@ -224,15 +247,14 @@ const Footer = () => {
             <ul className="space-y-2">
               {legalLinks.map((link) => (
                 <li key={link.name}>
-                  <motion.button
-                    type="button"
-                    whileHover={{ x: 4 }}
-                    transition={{ duration: 0.2 }}
-                    onClick={() => handleNavigation(link.href)}
-                    className="text-left text-sm transition-colors hover:text-white"
-                  >
-                    {link.name}
-                  </motion.button>
+                  <motion.div whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
+                    <Link
+                      href={link.href}
+                      className="text-left text-sm transition-colors hover:text-white"
+                    >
+                      {link.name}
+                    </Link>
+                  </motion.div>
                 </li>
               ))}
             </ul>
@@ -272,10 +294,12 @@ const Footer = () => {
             </p>
           </motion.div>
 
-          <p className="text-center text-xs text-slate-500">
-            &copy; {currentYear} ClaimScope Consulting, LLC. All rights
-            reserved.
-          </p>
+          <div className="flex flex-col items-center justify-center md:flex-row">
+            <p className="text-center text-xs text-slate-500">
+              &copy; {currentYear} ClaimScope Consulting, LLC. All rights
+              reserved.
+            </p>
+          </div>
         </div>
       </motion.div>
     </motion.footer>
