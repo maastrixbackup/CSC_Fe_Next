@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import BlogScreen from "@/components/screens/insights/BlogScreen";
-import GovernanceModel from "./GovernanceModel";
+// import GovernanceModel from "./GovernanceModel";
 
 const thinkingFramework = [
   {
@@ -53,7 +53,7 @@ export default function Insights() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-6 py-6 text-center">
+      {/* <section className="mx-auto max-w-6xl px-6 py-6 text-center">
         <h2 className="mb-8 text-3xl font-semibold text-[#1a237e] md:text-4xl">
           Documentation Governance Built for Operational Credibility
         </h2>
@@ -62,9 +62,9 @@ export default function Insights() {
           and readiness systems designed to improve clarity, organization, and
           execution alignment across operational environments.
         </p>
-      </section>
+      </section> */}
 
-      <section className="border-y border-gray-100 bg-gray-50 px-6 py-12">
+      {/* <section className="border-y border-gray-100 bg-gray-50 px-6 py-12">
         <div className="mx-auto max-w-3xl text-center">
           <p className="text-lg text-gray-700">
             ClaimScope operates strictly in a consulting-only capacity. All
@@ -75,9 +75,9 @@ export default function Insights() {
             communication is provided.
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="mx-auto max-w-6xl px-6 py-16">
+      {/* <section className="mx-auto max-w-6xl px-6 py-16">
         <div className="grid gap-10 md:grid-cols-2">
           <div className="rounded-2xl border-4 border-[#1a237e] bg-white p-8 shadow-lg">
             <h2 className="mb-8 text-2xl font-semibold text-[#1a237e]">
@@ -106,7 +106,7 @@ export default function Insights() {
       </section>
            <section className="py-16 px-6">
         <GovernanceModel />
-      </section>
+      </section> */}
       
    <section className="px-6 py-16">
         <div className="mx-auto max-w-6xl">
@@ -133,8 +133,8 @@ export default function Insights() {
         </div>
       </section>
 
-       <footer className="bg-gray-900 text-gray-300 text-sm py-12 px-6 text-center">
-        <div className="max-w-3xl mx-auto">
+     <footer className="bg-white text-gray-900 text-sm py-12 px-6 text-center">
+        <div className="max-w-7xl mx-auto">
           <p>
             ClaimScope™ Consulting, LLC provides documentation governance and readiness insights in a consulting-only capacity. 
             No claim handling, negotiation, representation, legal advice, or third-party communication is provided. 

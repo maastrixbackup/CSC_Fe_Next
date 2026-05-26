@@ -17,7 +17,7 @@ export default function Blogs({ initialBlogs }: BlogsProps) {
     : initialBlogs.slice(0, initialVisibleCount);
 
   return (
-    <section className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 px-6 py-12 transition-colors">
+    <section className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 px-6 py-18 transition-colors">
       <div className="mx-auto mt-12 max-w-7xl">
         <div className="animate-fade-in mb-16 text-center">
           <div className="mb-4 inline-block">

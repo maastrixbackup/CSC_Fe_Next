@@ -585,49 +585,30 @@ export default function AccessEngage() {
           </div>
         </section>
 
-        <section
-          id="enterprise-licensing"
-          className="py-[88px] max-md:py-[72px] max-sm:py-[72px]"
-        >
-          <div className="mx-auto max-w-[1240px] px-5">
-            <div className="grid items-center gap-7 rounded-3xl bg-[#0f1720] p-[52px] text-white shadow-[0_18px_40px_rgba(15,23,32,0.08)] max-md:p-[34px] md:grid-cols-[1fr_auto]">
+        <section id="enterprise-licensing" className="py-[88px] max-md:py-[72px] max-sm:py-[72px]">
+          <div className="max-w-[1240px] mx-auto px-5">
+            <div className="bg-[#1E2E66] text-white rounded-3xl shadow-[0_18px_40px_rgba(15,23,32,0.08)] p-[52px] max-md:p-[34px] grid md:grid-cols-[1fr_auto] gap-7 items-center">
               <div>
-                <div className="mb-[18px] inline-flex items-center gap-2 rounded-full bg-[#eaf2fb] px-[14px] py-2 text-xs font-bold uppercase tracking-wide text-[#173b61]">
-                  Enterprise Licensing &amp; Governance
-                </div>
-                <h2 className="m-0 text-[clamp(2rem,4vw,2.75rem)] leading-[1.15] tracking-[-0.03em] text-white">
-                  Standardized documentation governance for organizations
-                  operating across multiple projects, teams, or portfolios.
-                </h2>
-                <p className="mt-3.5 max-w-[760px] text-white/80">
-                  ClaimScope Enterprise Licensing is designed for organizations
-                  requiring multi-user system access, portfolio-level
-                  governance, controlled internal training deployment, and
-                  structured advisory integration.
+                <div className="inline-flex items-center gap-2 px-[14px] py-2 rounded-full bg-[#eaf2fb] text-[#173b61] text-xs font-bold uppercase tracking-wide mb-[18px]">Enterprise Licensing &amp; Governance</div>
+                <h2 className="text-[clamp(2rem,4vw,2.75rem)] leading-[1.15] tracking-[-0.03em] m-0 text-white">Standardized documentation governance for organizations operating across multiple projects, teams, or portfolios.</h2>
+                <p className="mt-3.5 text-white/80 max-w-[760px]">
+                  ClaimScope™ Enterprise Licensing is designed for organizations requiring multi-user system access,
+                  portfolio-level governance, controlled internal training deployment, and structured advisory integration.
                 </p>
-                <ul className="mt-6 grid list-none gap-3 gap-x-[18px] p-0 sm:grid-cols-2">
-                  {[
-                    "Multi-user system access",
-                    "Portfolio-level governance",
-                    "Standardization protocols",
-                    "Advisory integration",
-                  ].map((item) => (
-                    <li key={item} className="relative pl-[22px] text-white/90">
-                      <span className="absolute left-0 top-0 text-[#8fc1ff]">
-                        •
-                      </span>
-                      {item}
-                    </li>
-                  ))}
+                <ul className="mt-6 p-0 list-none grid sm:grid-cols-2 gap-3 gap-x-[18px]">
+                  <li className="relative pl-[22px] text-white/90 before:content-['•'] before:absolute before:left-0 before:top-0 before:text-[#8fc1ff]">Multi-user system access</li>
+                  <li className="relative pl-[22px] text-white/90 before:content-['•'] before:absolute before:left-0 before:top-0 before:text-[#8fc1ff]">Portfolio-level governance</li>
+                  <li className="relative pl-[22px] text-white/90 before:content-['•'] before:absolute before:left-0 before:top-0 before:text-[#8fc1ff]">Standardization protocols</li>
+                  <li className="relative pl-[22px] text-white/90 before:content-['•'] before:absolute before:left-0 before:top-0 before:text-[#8fc1ff]">Advisory integration</li>
                 </ul>
               </div>
               <div className="md:text-right">
-                <Link
-                  href="/intake/enterprise-licensing"
-                  className="inline-flex min-h-[52px] items-center justify-center rounded-full bg-[#1f4f82] px-[22px] text-sm font-bold text-white shadow-[0_12px_24px_rgba(31,79,130,0.2)] transition-all duration-200 hover:-translate-y-px hover:bg-[#173b61]"
+                <button 
+                  onClick={() => handleNavigate('/intake/enterprise-licensing')} 
+                  className="inline-flex items-center justify-center min-h-[52px] px-[22px] rounded-full bg-[#1f4f82] text-white font-bold text-sm shadow-[0_12px_24px_rgba(31,79,130,0.2)] hover:bg-[#173b61] hover:-translate-y-px transition-all duration-200 border border-2 border-white"
                 >
                   Request Enterprise Licensing
-                </Link>
+                </button>
               </div>
             </div>
           </div>
@@ -635,7 +616,7 @@ export default function AccessEngage() {
 
         <section
           id="engagement-path"
-          className="py-[88px] max-md:py-[72px] max-sm:py-[72px]"
+          className="py-[50px] max-md:py-[62px] max-sm:py-[62px]"
         >
           <div className="mx-auto max-w-[1240px] px-5">
             <Engagement />

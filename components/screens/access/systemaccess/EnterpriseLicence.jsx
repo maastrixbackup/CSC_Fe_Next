@@ -5,7 +5,7 @@ const EnterpriseLicence = () => {
   return (
     <div>
         <AccessNav />
-          <section id="enterprise-licensing" className="py-[88px] max-md:py-[72px] max-sm:py-[72px]">
+         <section id="enterprise-licensing" className="py-[88px] max-md:py-[72px] max-sm:py-[72px]">
           <div className="max-w-[1240px] mx-auto px-5">
             <div className="bg-[#0f1720] text-white rounded-3xl shadow-[0_18px_40px_rgba(15,23,32,0.08)] p-[52px] max-md:p-[34px] grid md:grid-cols-[1fr_auto] gap-7 items-center">
               <div>
