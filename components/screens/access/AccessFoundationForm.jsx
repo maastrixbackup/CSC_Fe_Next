@@ -180,7 +180,7 @@ export default function AccessFoundationForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Enter your full name"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -199,7 +199,7 @@ export default function AccessFoundationForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="name@example.com"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full rounded-2xl text-gray-800 border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -216,7 +216,7 @@ export default function AccessFoundationForm() {
                 required
                 value={formData.role}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               >
                 <option value="">Select your role</option>
                 <option value="Contractor / Field Operator">
@@ -247,7 +247,7 @@ export default function AccessFoundationForm() {
                 required
                 value={formData.documentation_status}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full rounded-2xl text-gray-800 border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               >
                 <option value="">Select documentation status</option>
                 <option value="Structured">Structured</option>
@@ -273,7 +273,7 @@ export default function AccessFoundationForm() {
                 required
                 value={formData.intent}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full rounded-2xl text-gray-800 border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               >
                 <option value="">Select your primary goal</option>
                 <option value="Organizing project documentation">

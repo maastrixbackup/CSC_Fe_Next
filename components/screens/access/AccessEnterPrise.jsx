@@ -186,7 +186,7 @@ export default function AccessEnterPrise() {
                 value={formData.full_name}
                 onChange={handleChange}
                 placeholder="Enter your full name"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -205,7 +205,7 @@ export default function AccessEnterPrise() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="name@example.com"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -225,7 +225,7 @@ export default function AccessEnterPrise() {
                 value={formData.organization}
                 onChange={handleChange}
                 placeholder="Enter organization name"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -242,7 +242,7 @@ export default function AccessEnterPrise() {
                 required
                 value={formData.active_projects}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               >
                 <option value="">Select project range</option>
                 <option value="1-5">1-5 projects</option>
@@ -266,7 +266,7 @@ export default function AccessEnterPrise() {
                 required
                 value={formData.users_count}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               >
                 <option value="">Select user range</option>
                 <option value="1-10">1-10 users</option>
@@ -290,7 +290,7 @@ export default function AccessEnterPrise() {
                 required
                 value={formData.objective}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               >
                 <option value="">Select primary objective</option>
                 <option value="Automation & Scaling">
@@ -324,7 +324,7 @@ export default function AccessEnterPrise() {
                 value={formData.description}
                 onChange={handleChange}
                 placeholder="Describe your documentation needs and current challenges"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
               <p className="mt-2 text-xs text-[#5c6b78]">
                 {remainingSummaryChars} characters remaining
@@ -349,7 +349,7 @@ export default function AccessEnterPrise() {
                 value={formData.documentation_workflow}
                 onChange={handleChange}
                 placeholder="Describe your current documentation workflow, tools, and processes..."
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-800 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 

@@ -36,11 +36,11 @@ function pushDataLayer(payload: Record<string, unknown>) {
 
 const CtaBanner = ({
   title = "Move from Fragmented Documentation to Controlled Operations",
-  body = "If your organization is ready to implement structured documentation governance and improve consistency across operations, the next step is a structured consultation.",
+  // body = "If your organization is ready to implement structured documentation governance and improve consistency across operations, the next step is a structured consultation.",
   ctaLabel = "Start with a Structured Documentation Assessment",
   ctaHref = "/schedule",
   compliance = "Advisory-only. No third-party communication, representation, or claim handling.",
-  subheading = "Start with a structured documentation assessment",
+  // subheading = "Start with a structured documentation assessment",
 }: CtaBannerProps) => {
   const router = useRouter();
 
@@ -89,14 +89,14 @@ const CtaBanner = ({
             <h2 className="text-3xl font-bold leading-tight text-white drop-shadow-sm sm:text-4xl md:text-4xl lg:text-5xl">
               {title}
             </h2>
-
+{/* 
             <div className="space-y-4 text-base leading-relaxed text-white/85 sm:text-lg">
               <p>{body}</p>
             </div>
 
             <p className="text-sm font-semibold uppercase tracking-[0.08em] text-[#7EB3FF] sm:text-base">
               {subheading}
-            </p>
+            </p> */}
 
             <motion.button
               {...buttonMotion}

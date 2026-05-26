@@ -25,6 +25,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+button:not(:disabled) {
+  cursor: pointer;
+}
+
 @keyframes slideUp {
   from {
     opacity: 0;

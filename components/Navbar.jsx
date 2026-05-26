@@ -22,9 +22,9 @@ const solutionItems = [
 
 const accessItems = [
   { label: "Client Portal", path: "/access" },
-  { label: "Training Portal (LMS)", path: "/lms" },
+  { label: "Training Portal (LMS)", path: "/readiness-portal" },
   { label: "Member Login", path: "/member-login" },
-  { label: "Documentation Resources", path: "/lms/documentation-readiness" },
+  { label: "Documentation Resources", path: "/readiness-portal/documentation-readiness" },
   // { label: "Governance & Compliance Resources", path: "/access#advisory-support" },
 ];
 
@@ -36,7 +36,7 @@ function pushDataLayer(payload) {
 }
 
 function isAccessPath(path) {
-  return ["/access", "/lms", "/member-login", "/control/login"].includes(path);
+  return ["/access", "/readiness-portal", "/member-login", "/control/login"].includes(path);
 }
 
 const Navbar = () => {
@@ -275,7 +275,7 @@ const Navbar = () => {
                     <button
                       key={item.path}
                       onClick={() => handleNavigation(item.path)}
-                      className="w-full px-4 py-3 text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
+                      className="w-full px-4 py-3 cursor-pointer text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
                     >
                       {item.label}
                     </button>
@@ -317,7 +317,7 @@ const Navbar = () => {
                     <button
                       key={item.path}
                       onClick={() => handleNavigation(item.path)}
-                      className="w-full px-4 py-3 text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
+                      className="w-full px-4 py-3 cursor-pointer text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
                     >
                       {item.label}
                     </button>
@@ -400,7 +400,7 @@ const Navbar = () => {
 
     <button
               onClick={handleScheduleConsultation}
-              className="whitespace-nowrap px-6 py-4 bg-[#1a237e] hover:bg-[#0d47a1] text-white text-sm font-medium tracking-wide transition-all duration-300 shadow-lg hover:shadow-[#1a237e]/30 hover:scale-105 transform"
+              className="whitespace-nowrap cursor-pointer px-6 py-4 bg-[#1a237e] hover:bg-[#0d47a1] text-white text-sm font-medium tracking-wide transition-all duration-300 shadow-lg hover:shadow-[#1a237e]/30 hover:scale-105 transform"
             >
               SCHEDULE A CONSULTATION
             </button>
@@ -409,7 +409,7 @@ const Navbar = () => {
           <div className="lg:hidden">
             <button
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
+              className="inline-flex items-center cursor-pointer justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
             >
               <span className="sr-only">Open main menu</span>
               {!isOpen ? (
