@@ -151,16 +151,16 @@ export default function Schedule() {
           </div>
         </section>
 
-        <section className="bg-gray-900 px-6 py-12 text-gray-300">
-          <div className="mx-auto max-w-4xl text-center">
-            <p className="text-sm leading-relaxed">
-              ClaimScope Consulting provides documentation readiness consulting
-              only. No claim negotiation, representation, legal advice,
-              application preparation, submission services, or third-party
-              communications are provided.
-            </p>
-          </div>
-        </section>
+     
+      <section className="bg-navy  text- py-12 px-6">
+        <div className="max-w-6xl mx-auto text-center">
+          <p className="text-sm leading-relaxed">
+            ClaimScope™ Consulting provides documentation readiness consulting only.
+            No claim negotiation, representation, legal advice, application preparation,
+            submission services, or third-party communications are provided.
+          </p>
+        </div>
+      </section>
       </div>
     </>
   );
