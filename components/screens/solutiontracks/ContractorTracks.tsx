@@ -45,7 +45,7 @@ const ContractorTracks = () => {
   return (
    <div className="bg-white text-slate-900">
       {/* Hero Section - Reduced height */}
-      <section className="relative w-full overflow-hidden bg-black/25">
+      <section className="relative w-full overflow-hidden bg-transparent">
         {/* <motion.div
           aria-hidden="true"
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"

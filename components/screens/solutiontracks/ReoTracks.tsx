@@ -47,7 +47,7 @@ const ReoTracks = () => {
 
   return (
     <div className="bg-white text-slate-900">
-      <section className="relative w-full overflow-hidden bg-black/25">
+      <section className="relative w-full overflow-hidden bg-transparent">
         <motion.div
           className="absolute inset-0"
           initial={{ scale: 1.1 }}

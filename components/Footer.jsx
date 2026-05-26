@@ -119,7 +119,7 @@ const Footer = () => {
   const companyLinks = [
     { name: "About Us", href: "/about" },
     { name: "Pricing", href: "/pricing" },
-    { name: "States We Serve", href: "/documentation-readiness" },
+    { name: "States We Serve", href: "/" },
     { name: "FAQ", href: "/faq" },
     { name: "Contact", href: "/contact" },
   ];
