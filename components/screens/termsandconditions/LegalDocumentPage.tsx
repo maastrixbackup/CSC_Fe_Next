@@ -34,7 +34,7 @@ export default function LegalDocumentPage({
   const effectiveDate = formatEffectiveDate(document.effective_date);
 
   return (
-    <main className="min-h-screen bg-gray-50 px-6 py-20 md:px-16">
+    <main className="min-h-screen bg-gray-50 px-6 py-26 md:px-16">
       <section className="mx-auto max-w-6xl rounded-2xl bg-white p-6 shadow-lg sm:p-8 md:p-12">
         <h1 className="text-center text-3xl font-bold text-blue-900 md:text-4xl">
           {document.title || "Policy"}
