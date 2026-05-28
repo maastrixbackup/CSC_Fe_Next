@@ -132,7 +132,7 @@ export default function Schedule() {
       />
 
       <div className="bg-gray-50 text-gray-800">
-        <section className="bg-gradient-to-r from-[#0a0f2e] to-[#1a237e] px-6 py-20 text-white">
+        <section className="bg-gradient-to-r from-[#0a0f2e] to-[#1a237e] px-6 py-28 text-white">
           <div className="mx-auto max-w-6xl text-center">
             <h1 className="mb-6 text-3xl font-bold md:text-4xl">
               Schedule Your Documentation Readiness Consultation

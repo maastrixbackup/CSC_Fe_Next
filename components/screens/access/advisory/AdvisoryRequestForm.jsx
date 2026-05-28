@@ -119,7 +119,7 @@ export default function AdvisoryRequestForm({ title }) {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder="Enter your full name"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-600 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -138,7 +138,7 @@ export default function AdvisoryRequestForm({ title }) {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="name@example.com"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-600 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -157,7 +157,7 @@ export default function AdvisoryRequestForm({ title }) {
                 value={formData.role}
                 onChange={handleChange}
                 placeholder="e.g. Contractor, Owner, Investor"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-600 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -174,7 +174,7 @@ export default function AdvisoryRequestForm({ title }) {
                 required
                 value={formData.documentation_status}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-600 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               >
                 <option value="">Select documentation status</option>
                 <option value="Disorganized">Disorganized</option>
@@ -198,7 +198,7 @@ export default function AdvisoryRequestForm({ title }) {
                 value={formData.use_case}
                 onChange={handleChange}
                 placeholder="Describe your use case"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-600 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -215,7 +215,7 @@ export default function AdvisoryRequestForm({ title }) {
                 required
                 value={formData.plan}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-600 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               >
                 <option value="">Select a plan</option>
                 <option value="foundation">Foundation</option>
@@ -237,7 +237,7 @@ export default function AdvisoryRequestForm({ title }) {
                 required
                 value={formData.advisory_type}
                 onChange={handleChange}
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-600 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               >
                 <option value="">Select advisory type</option>
                 <option value="review">Review</option>
@@ -261,7 +261,7 @@ export default function AdvisoryRequestForm({ title }) {
                 value={formData.primary_goal}
                 onChange={handleChange}
                 placeholder="Your primary goal"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-600 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
@@ -280,7 +280,7 @@ export default function AdvisoryRequestForm({ title }) {
                 value={formData.project_type}
                 onChange={handleChange}
                 placeholder="e.g. New Build, Renovation, Portfolio"
-                className="w-full rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
+                className="w-full text-gray-600 rounded-2xl border border-[#c8d2dd] px-4 py-3 text-sm outline-none transition focus:border-[#1f4f82] focus:ring-2 focus:ring-[#1f4f82]/20"
               />
             </div>
 
