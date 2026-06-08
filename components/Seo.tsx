@@ -1,7 +1,7 @@
-// utils/seo.ts
+import type { Metadata } from "next";
 
-const SITE_URL = "https://claimscopeconsulting.com";
-const SITE_NAME = "ClaimScope Consulting";
+export const SITE_URL = "https://claimscopeconsulting.com";
+export const SITE_NAME = "ClaimScope Consulting";
 
 export function buildMetadata({
   title,
@@ -15,7 +15,7 @@ export function buildMetadata({
   keywords?: string;
   image?: string;
   path?: string;
-}) {
+}): Metadata {
   const canonical = `${SITE_URL}${path}`;
   const ogImage = image
     ? image.startsWith("http")

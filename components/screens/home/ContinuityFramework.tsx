@@ -173,7 +173,7 @@ export default function ContinuityFramework() {
                 event: "cta_click",
                 cta_name: "View Full Framework",
               });
-              router.push("/schedule");
+              router.push("/operational-continuity-framework");
               window.scrollTo({ top: 0, behavior: "smooth" });
             }}
             className="group inline-flex items-center gap-3 bg-blue-900 px-10 py-5 text-base font-semibold tracking-wide text-white shadow-lg transition-all duration-200 hover:bg-blue-800 hover:shadow-xl active:scale-[0.97] active:bg-blue-950 md:text-lg"

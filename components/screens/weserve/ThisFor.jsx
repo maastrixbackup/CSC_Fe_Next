@@ -40,7 +40,7 @@ const ThisFor = () => {
 
         <div className="mx-auto mb-16 max-w-7xl text-center">
           <p className="text-xl leading-relaxed text-gray-600">
-            ClaimScope(TM) Consulting is designed for organizations that
+            ClaimScope™ Consulting is designed for organizations that
             recognize the importance of structured documentation, operational
             alignment, and scalable systems. This approach is best suited for
             teams committed to improving how documentation is created,
@@ -67,7 +67,7 @@ const ThisFor = () => {
           <div className="rounded-2xl border border-blue-100 bg-white p-8 shadow-sm md:p-10">
             <p className="text-lg leading-relaxed text-gray-700">
               If your organization is focused on building structured,
-              consistent, and scalable documentation systems, ClaimScope(TM)
+              consistent, and scalable documentation systems, ClaimScope™
               provides a governance-based approach designed to support those
               objectives.
             </p>

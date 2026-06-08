@@ -25,15 +25,12 @@ const Positioning = () => {
 
             <div className="mx-auto mt-5 max-w-7xl space-y-4 text-center text-lg leading-relaxed text-white/80 md:text-xl">
               <p>
-                Most systems focus on collecting and storing documentation.
-                That creates visibility, but not control.
+               Most systems focus on collecting and storing documentation. That creates visibility but not control.
               </p>
 
               <p>
-                ClaimScope
-                <span className="align-super text-sm text-white/75">TM</span>{" "}
-                establishes a governance layer that defines how documentation
-                is structured, validated, and carried forward across workflows.
+              ClaimScope™ establishes a governance layer that defines how documentation is structured,
+               validated, maintained, and carried forward across workflows.
               </p>
             </div>
           </div>
@@ -41,7 +38,7 @@ const Positioning = () => {
           <div className="flex justify-center">
             <div className="w-full max-w-3xl rounded-2xl border border-white  px-4 py-3 text-center shadow-[0_0_0_1px_rgba(251,146,60,0.12)] backdrop-blur-[2px]">
               <p className="text-lg font-semibold leading-snug text-white md:text-xl">
-                We do not manage documents We establish control.
+                Learn More About Documentation Governance
               </p>
             </div>
           </div>

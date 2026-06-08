@@ -213,7 +213,7 @@ export default function Schedule() {
         <section className="px-6 py-12">
           <div className="mx-auto max-w-6xl text-center">
             <p className="text-sm leading-relaxed text-gray-700">
-              ClaimScope(TM) Consulting provides documentation readiness
+              ClaimScope™ Consulting provides documentation readiness
               consulting only. No claim negotiation, representation, legal
               advice, application preparation, submission services, or
               third-party communications are provided.

@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import {
   DocumentationInventory,
@@ -10,6 +11,7 @@ import {
 
 const IntakeForm = () => {
   const [form, setForm] = useState(intakeFormData);
+  const searchParams = useSearchParams();
 
   const [files, setFiles] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -18,6 +20,19 @@ const IntakeForm = () => {
   const [prohibitedContentFlags, setProhibitedContentFlags] = useState([]);
   const [photoCategories, setPhotoCategories] = useState({});
   const [trackManuallySelected, setTrackManuallySelected] = useState(false);
+
+  useEffect(() => {
+    const trackId = searchParams.get("id");
+    const trackTitle = searchParams.get("title");
+
+    if (!trackId && !trackTitle) return;
+
+    setForm((prev) => ({
+      ...prev,
+      track_selection: trackId || prev.track_selection,
+      engagement_type: trackTitle || prev.engagement_type,
+    }));
+  }, [searchParams]);
 
   const checkProhibitedContent = (text) => {
     const prohibitedPatterns = [

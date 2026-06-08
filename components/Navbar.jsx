@@ -3,29 +3,40 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
+
 import Logo from "@/public/assets/Logo Upated.png";
+
+const aboutItems = [
+    { label: "About ClaimScope™", path: "/about" },
+    { label: "Why ClaimScope™", path: "/why-claimscope" },
+  ];
+
+const accessItems = [
+  { label: "Client Access", path: "/access" },
+  { label: "AI Governance", path: "/ai-governance-human-oversight" },
+];
 
 const solutionItems = [
   {
-    label: "Contractor Documentation Support",
-    path: "/solutions/contractor-tracks",
+    label: "Operational Continuity",
+    path: "/operational-continuity-framework",
   },
   {
-    label: "Real Estate / REO Documentation Readiness",
-    path: "/solutions/reo-tracks",
+    label: "Documentation Governance",
+    path: "/documentation-governance",
   },
   {
-    label: "Disaster Documentation Readiness + FEMA IA/PA Education",
-    path: "/solutions/disaster",
+    label: "Audit Readiness",
+    path: "/audit-readiness-framework",
   },
 ];
 
-const accessItems = [
-  { label: "Client Portal", path: "/access" },
-  { label: "Training Portal (LMS)", path: "/readiness-portal" },
-  { label: "Member Login", path: "/member-login" },
-  { label: "Documentation Resources", path: "/readiness-portal/documentation-readiness" },
-  // { label: "Governance & Compliance Resources", path: "/access#advisory-support" },
+const assessmentItems = [
+  { label: "Governance Assessment", path: "/assessment" },
+  {
+    label: "Readiness Scoring Explained",
+    path: "/readiness-scoring-explained",
+  },
 ];
 
 function pushDataLayer(payload) {
@@ -35,68 +46,136 @@ function pushDataLayer(payload) {
   }
 }
 
-function isAccessPath(path) {
-  return ["/access", "/readiness-portal", "/member-login", "/control/login"].includes(path);
-}
-
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDesktopSolutionsOpen, setIsDesktopSolutionsOpen] = useState(false);
-  const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
+  const [isDesktopAboutOpen, setIsDesktopAboutOpen] = useState(false);
   const [isDesktopAccessOpen, setIsDesktopAccessOpen] = useState(false);
+  const [isDesktopSolutionsOpen, setIsDesktopSolutionsOpen] = useState(false);
+  const [isDesktopAssessmentOpen, setIsDesktopAssessmentOpen] = useState(false);
+  const [isMobileAboutOpen, setIsMobileAboutOpen] = useState(false);
   const [isMobileAccessOpen, setIsMobileAccessOpen] = useState(false);
+  const [isMobileSolutionsOpen, setIsMobileSolutionsOpen] = useState(false);
+  const [isMobileAssessmentOpen, setIsMobileAssessmentOpen] = useState(false);
+
   const router = useRouter();
   const pathname = usePathname();
-  const desktopSolutionsRef = useRef(null);
-  const mobileSolutionsRef = useRef(null);
+
+  const desktopAboutRef = useRef(null);
   const desktopAccessRef = useRef(null);
+  const desktopSolutionsRef = useRef(null);
+  const desktopAssessmentRef = useRef(null);
+  const mobileAboutRef = useRef(null);
   const mobileAccessRef = useRef(null);
+  const mobileSolutionsRef = useRef(null);
+  const mobileAssessmentRef = useRef(null);
+
+  const isAboutActive = () =>
+    pathname === "/about" || pathname === "/why-claimscope";
+
+  const isAccessActive = () =>
+    pathname === "/access" || pathname === "/ai-governance-human-oversight";
+
+  const isSolutionsActive = () =>
+    pathname === "/solutions" ||
+    pathname === "/operational-continuity-framework" ||
+    pathname === "/documentation-governance" ||
+    pathname === "/audit-readiness-framework";
+
+  const isAssessmentActive = () =>
+    pathname === "/assessment" || pathname === "/readiness-scoring-explained";
+
+  const closeAllDesktopDropdowns = () => {
+    setIsDesktopAboutOpen(false);
+    setIsDesktopAccessOpen(false);
+    setIsDesktopSolutionsOpen(false);
+    setIsDesktopAssessmentOpen(false);
+  };
+
+  const closeAllMobileDropdowns = () => {
+    setIsMobileAboutOpen(false);
+    setIsMobileAccessOpen(false);
+    setIsMobileSolutionsOpen(false);
+    setIsMobileAssessmentOpen(false);
+  };
+
+  const closeMenus = () => {
+    setIsOpen(false);
+    closeAllDesktopDropdowns();
+    closeAllMobileDropdowns();
+  };
 
   const toggleMenu = () => {
     const nextState = !isOpen;
     setIsOpen(nextState);
     if (!nextState) {
-      setIsMobileSolutionsOpen(false);
-      setIsMobileAccessOpen(false);
+      closeAllMobileDropdowns();
     }
   };
 
-  const toggleDesktopSolutions = () => {
-    setIsDesktopSolutionsOpen((prev) => !prev);
+  const toggleDesktopAbout = () => {
+    setIsDesktopAboutOpen((prev) => !prev);
     setIsDesktopAccessOpen(false);
-  };
-
-  const toggleMobileSolutions = () => {
-    setIsMobileSolutionsOpen((prev) => !prev);
-    setIsMobileAccessOpen(false);
+    setIsDesktopSolutionsOpen(false);
+    setIsDesktopAssessmentOpen(false);
   };
 
   const toggleDesktopAccess = () => {
     setIsDesktopAccessOpen((prev) => !prev);
+    setIsDesktopAboutOpen(false);
     setIsDesktopSolutionsOpen(false);
+    setIsDesktopAssessmentOpen(false);
+  };
+
+  const toggleDesktopSolutions = () => {
+    setIsDesktopSolutionsOpen((prev) => !prev);
+    setIsDesktopAboutOpen(false);
+    setIsDesktopAccessOpen(false);
+    setIsDesktopAssessmentOpen(false);
+  };
+
+  const toggleDesktopAssessment = () => {
+    setIsDesktopAssessmentOpen((prev) => !prev);
+    setIsDesktopAboutOpen(false);
+    setIsDesktopAccessOpen(false);
+    setIsDesktopSolutionsOpen(false);
+  };
+
+  const toggleMobileAbout = () => {
+    setIsMobileAboutOpen((prev) => !prev);
+    setIsMobileAccessOpen(false);
+    setIsMobileSolutionsOpen(false);
+    setIsMobileAssessmentOpen(false);
   };
 
   const toggleMobileAccess = () => {
     setIsMobileAccessOpen((prev) => !prev);
+    setIsMobileAboutOpen(false);
+    setIsMobileSolutionsOpen(false);
+    setIsMobileAssessmentOpen(false);
+  };
+
+  const toggleMobileSolutions = () => {
+    setIsMobileSolutionsOpen((prev) => !prev);
+    setIsMobileAboutOpen(false);
+    setIsMobileAccessOpen(false);
+    setIsMobileAssessmentOpen(false);
+  };
+
+  const toggleMobileAssessment = () => {
+    setIsMobileAssessmentOpen((prev) => !prev);
+    setIsMobileAboutOpen(false);
+    setIsMobileAccessOpen(false);
     setIsMobileSolutionsOpen(false);
   };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
-        isDesktopSolutionsOpen &&
-        desktopSolutionsRef.current &&
-        !desktopSolutionsRef.current.contains(event.target)
+        isDesktopAboutOpen &&
+        desktopAboutRef.current &&
+        !desktopAboutRef.current.contains(event.target)
       ) {
-        setIsDesktopSolutionsOpen(false);
-      }
-
-      if (
-        isMobileSolutionsOpen &&
-        mobileSolutionsRef.current &&
-        !mobileSolutionsRef.current.contains(event.target)
-      ) {
-        setIsMobileSolutionsOpen(false);
+        setIsDesktopAboutOpen(false);
       }
 
       if (
@@ -108,20 +187,58 @@ const Navbar = () => {
       }
 
       if (
+        isDesktopSolutionsOpen &&
+        desktopSolutionsRef.current &&
+        !desktopSolutionsRef.current.contains(event.target)
+      ) {
+        setIsDesktopSolutionsOpen(false);
+      }
+
+      if (
+        isDesktopAssessmentOpen &&
+        desktopAssessmentRef.current &&
+        !desktopAssessmentRef.current.contains(event.target)
+      ) {
+        setIsDesktopAssessmentOpen(false);
+      }
+
+      if (
+        isMobileAboutOpen &&
+        mobileAboutRef.current &&
+        !mobileAboutRef.current.contains(event.target)
+      ) {
+        setIsMobileAboutOpen(false);
+      }
+
+      if (
         isMobileAccessOpen &&
         mobileAccessRef.current &&
         !mobileAccessRef.current.contains(event.target)
       ) {
         setIsMobileAccessOpen(false);
       }
+
+      if (
+        isMobileSolutionsOpen &&
+        mobileSolutionsRef.current &&
+        !mobileSolutionsRef.current.contains(event.target)
+      ) {
+        setIsMobileSolutionsOpen(false);
+      }
+
+      if (
+        isMobileAssessmentOpen &&
+        mobileAssessmentRef.current &&
+        !mobileAssessmentRef.current.contains(event.target)
+      ) {
+        setIsMobileAssessmentOpen(false);
+      }
     };
 
     const handleEscape = (event) => {
       if (event.key === "Escape") {
-        setIsDesktopSolutionsOpen(false);
-        setIsMobileSolutionsOpen(false);
-        setIsDesktopAccessOpen(false);
-        setIsMobileAccessOpen(false);
+        closeAllDesktopDropdowns();
+        closeAllMobileDropdowns();
       }
     };
 
@@ -135,18 +252,21 @@ const Navbar = () => {
       document.removeEventListener("keydown", handleEscape);
     };
   }, [
-    isDesktopSolutionsOpen,
-    isMobileSolutionsOpen,
+    isDesktopAboutOpen,
     isDesktopAccessOpen,
+    isDesktopSolutionsOpen,
+    isDesktopAssessmentOpen,
+    isMobileAboutOpen,
     isMobileAccessOpen,
+    isMobileSolutionsOpen,
+    isMobileAssessmentOpen,
   ]);
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1024) {
         setIsOpen(false);
-        setIsMobileSolutionsOpen(false);
-        setIsMobileAccessOpen(false);
+        closeAllMobileDropdowns();
       }
     };
 
@@ -154,13 +274,17 @@ const Navbar = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const closeMenus = () => {
-    setIsOpen(false);
-    setIsDesktopSolutionsOpen(false);
-    setIsMobileSolutionsOpen(false);
-    setIsDesktopAccessOpen(false);
-    setIsMobileAccessOpen(false);
-  };
+  useEffect(() => {
+    if (!isOpen) {
+      closeAllMobileDropdowns();
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen) {
+      closeAllDesktopDropdowns();
+    }
+  }, [isOpen]);
 
   const handleNavigation = (path) => {
     if (path.startsWith("/solutions/")) {
@@ -184,12 +308,13 @@ const Navbar = () => {
       cta_location: "navbar",
       cta_destination: "/schedule",
     });
+
     handleNavigation("/schedule");
   };
 
   return (
     <nav className="fixed z-30 mt-0 w-full border-b border-gray-200 bg-white shadow-sm">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-[82rem] px-2 sm:px-6 lg:px-0">
         <div className="flex h-auto items-center justify-between">
           <div className="flex items-center">
             <div
@@ -200,14 +325,15 @@ const Navbar = () => {
                 src={Logo}
                 alt="CSC Logo"
                 priority
-                className="h-18 w-24 object-contain transition-all duration-300 group-hover:scale-105 group-hover:brightness-110 md:h-24 md:w-36"
+                className="h-18 w-24 object-contain transition-all duration-300 group-hover:scale-105 group-hover:brightness-110 md:h-24 md:w-32"
               />
             </div>
           </div>
 
-          <div className="hidden items-center space-x-8 lg:flex">
+          <div className="hidden items-center gap-4 lg:flex xl:gap-6 2xl:gap-8">
             <div className="relative">
               <button
+                type="button"
                 onClick={() => handleNavigation("/")}
                 className={`group relative py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
                   pathname === "/" ? "text-gray-900" : ""
@@ -224,30 +350,57 @@ const Navbar = () => {
               </button>
             </div>
 
-            <div className="relative">
+            <div className="relative" ref={desktopAboutRef}>
               <button
-                onClick={() => handleNavigation("/about")}
-                className={`group relative py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
-                  pathname === "/about" ? "text-gray-900" : ""
+                type="button"
+                onClick={toggleDesktopAbout}
+                aria-expanded={isDesktopAboutOpen}
+                className={`group relative flex items-center gap-1 py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
+                  isAboutActive() ? "text-gray-900" : ""
                 }`}
               >
                 ABOUT
+                <svg
+                  className={`h-6 w-6 text-black transition-transform duration-200 ${
+                    isDesktopAboutOpen ? "rotate-180" : ""
+                  }`}
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M12 16L5 8h14z" fill="currentColor" />
+                </svg>
                 <div
                   className={`absolute bottom-0 left-0 h-0.5 w-full bg-[#1a237e] transition-all duration-300 ${
-                    pathname === "/about"
+                    isAboutActive()
                       ? "opacity-100"
                       : "opacity-0 group-hover:opacity-100"
                   }`}
                 />
               </button>
+
+              {isDesktopAboutOpen && (
+                <div className="absolute left-0 top-full z-50 mt-6 w-[280px] rounded-lg border border-gray-200 bg-[#F1F4F8] py-2 shadow-xl">
+                  {aboutItems.map((item) => (
+                    <button
+                      key={item.path}
+                      type="button"
+                      onClick={() => handleNavigation(item.path)}
+                      className="w-full cursor-pointer px-4 py-3 text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
 
             <div className="relative" ref={desktopAccessRef}>
               <button
+                type="button"
                 onClick={toggleDesktopAccess}
                 aria-expanded={isDesktopAccessOpen}
                 className={`group relative flex items-center gap-1 py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
-                  isAccessPath(pathname) ? "text-gray-900" : ""
+                  isAccessActive() ? "text-gray-900" : ""
                 }`}
               >
                 ACCESS
@@ -262,7 +415,7 @@ const Navbar = () => {
                 </svg>
                 <div
                   className={`absolute bottom-0 left-0 h-0.5 w-full bg-[#1a237e] transition-all duration-300 ${
-                    isAccessPath(pathname)
+                    isAccessActive()
                       ? "opacity-100"
                       : "opacity-0 group-hover:opacity-100"
                   }`}
@@ -270,12 +423,13 @@ const Navbar = () => {
               </button>
 
               {isDesktopAccessOpen && (
-                <div className="absolute left-0 top-full z-50 mt-6 w-[320px] rounded-lg border border-gray-200 bg-[#F1F4F8] py-2 shadow-xl">
+                <div className="absolute left-0 top-full z-50 mt-6 w-[280px] rounded-lg border border-gray-200 bg-[#F1F4F8] py-2 shadow-xl">
                   {accessItems.map((item) => (
                     <button
                       key={item.path}
+                      type="button"
                       onClick={() => handleNavigation(item.path)}
-                      className="w-full px-4 py-3 cursor-pointer text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
+                      className="w-full cursor-pointer px-4 py-3 text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
                     >
                       {item.label}
                     </button>
@@ -286,10 +440,11 @@ const Navbar = () => {
 
             <div className="relative" ref={desktopSolutionsRef}>
               <button
+                type="button"
                 onClick={toggleDesktopSolutions}
                 aria-expanded={isDesktopSolutionsOpen}
                 className={`group relative flex items-center gap-1 py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
-                  pathname.startsWith("/solutions") ? "text-gray-900" : ""
+                  isSolutionsActive() ? "text-gray-900" : ""
                 }`}
               >
                 SOLUTIONS
@@ -304,7 +459,7 @@ const Navbar = () => {
                 </svg>
                 <div
                   className={`absolute bottom-0 left-0 h-0.5 w-full bg-[#1a237e] transition-all duration-300 ${
-                    pathname.startsWith("/solutions")
+                    isSolutionsActive()
                       ? "opacity-100"
                       : "opacity-0 group-hover:opacity-100"
                   }`}
@@ -316,8 +471,53 @@ const Navbar = () => {
                   {solutionItems.map((item) => (
                     <button
                       key={item.path}
+                      type="button"
                       onClick={() => handleNavigation(item.path)}
-                      className="w-full px-4 py-3 cursor-pointer text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
+                      className="w-full cursor-pointer px-4 py-3 text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div className="relative" ref={desktopAssessmentRef}>
+              <button
+                type="button"
+                onClick={toggleDesktopAssessment}
+                aria-expanded={isDesktopAssessmentOpen}
+                className={`group relative flex items-center gap-1 py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
+                  isAssessmentActive() ? "text-gray-900" : ""
+                }`}
+              >
+                ASSESSMENT
+                <svg
+                  className={`h-6 w-6 text-black transition-transform duration-200 ${
+                    isDesktopAssessmentOpen ? "rotate-180" : ""
+                  }`}
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M12 16L5 8h14z" fill="currentColor" />
+                </svg>
+                <div
+                  className={`absolute bottom-0 left-0 h-0.5 w-full bg-[#1a237e] transition-all duration-300 ${
+                    isAssessmentActive()
+                      ? "opacity-100"
+                      : "opacity-0 group-hover:opacity-100"
+                  }`}
+                />
+              </button>
+
+              {isDesktopAssessmentOpen && (
+                <div className="absolute left-0 top-full z-50 mt-6 w-[320px] rounded-lg border border-gray-200 bg-[#F1F4F8] py-2 shadow-xl">
+                  {assessmentItems.map((item) => (
+                    <button
+                      key={item.path}
+                      type="button"
+                      onClick={() => handleNavigation(item.path)}
+                      className="w-full cursor-pointer px-4 py-3 text-left text-sm text-gray-700 transition-colors hover:bg-gray-50 hover:text-gray-900"
                     >
                       {item.label}
                     </button>
@@ -328,24 +528,7 @@ const Navbar = () => {
 
             <div className="relative">
               <button
-                onClick={() => handleNavigation("/pricing")}
-                className={`group relative py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
-                  pathname === "/pricing" ? "text-gray-900" : ""
-                }`}
-              >
-                PRICING
-                <div
-                  className={`absolute bottom-0 left-0 h-0.5 w-full bg-[#1a237e] transition-all duration-300 ${
-                    pathname === "/pricing"
-                      ? "opacity-100"
-                      : "opacity-0 group-hover:opacity-100"
-                  }`}
-                />
-              </button>
-            </div>
-
-            <div className="relative">
-              <button
+                type="button"
                 onClick={() => handleNavigation("/insights")}
                 className={`group relative py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
                   pathname === "/insights" ? "text-gray-900" : ""
@@ -364,6 +547,7 @@ const Navbar = () => {
 
             <div className="relative">
               <button
+                type="button"
                 onClick={() => handleNavigation("/faq")}
                 className={`group relative py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
                   pathname === "/faq" ? "text-gray-900" : ""
@@ -382,6 +566,7 @@ const Navbar = () => {
 
             <div className="relative">
               <button
+                type="button"
                 onClick={() => handleNavigation("/contact")}
                 className={`group relative py-2 text-base font-medium text-gray-700 transition-colors duration-200 hover:text-gray-900 ${
                   pathname === "/contact" ? "text-gray-900" : ""
@@ -398,9 +583,10 @@ const Navbar = () => {
               </button>
             </div>
 
-    <button
+            <button
+              type="button"
               onClick={handleScheduleConsultation}
-              className="whitespace-nowrap cursor-pointer px-6 py-4 bg-[#1a237e] hover:bg-[#0d47a1] text-white text-sm font-medium tracking-wide transition-all duration-300 shadow-lg hover:shadow-[#1a237e]/30 hover:scale-105 transform"
+              className="whitespace-nowrap bg-[#1a237e] px-6 py-4 text-sm font-medium tracking-wide text-white shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#0d47a1] hover:shadow-[#1a237e]/30"
             >
               SCHEDULE A CONSULTATION
             </button>
@@ -408,8 +594,9 @@ const Navbar = () => {
 
           <div className="lg:hidden">
             <button
+              type="button"
               onClick={toggleMenu}
-              className="inline-flex items-center cursor-pointer justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
+              className="inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-gray-500"
             >
               <span className="sr-only">Open main menu</span>
               {!isOpen ? (
@@ -448,23 +635,59 @@ const Navbar = () => {
 
       {isOpen && (
         <div className="border-t border-gray-200 lg:hidden">
-          <div className="space-y-1 px-2 pt-2 pb-3">
+          <div className="space-y-1 px-2 pb-3 pt-2">
             <button
+              type="button"
               onClick={() => handleNavigation("/")}
               className="block w-full rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
             >
               HOME
             </button>
 
-            <button
-              onClick={() => handleNavigation("/about")}
-              className="block w-full rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-            >
-              ABOUT
-            </button>
+            <div ref={mobileAboutRef}>
+              <button
+                type="button"
+                onClick={toggleMobileAbout}
+                aria-expanded={isMobileAboutOpen}
+                className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+              >
+                ABOUT
+                <svg
+                  className={`h-5 w-5 transition-transform duration-200 ${
+                    isMobileAboutOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              {isMobileAboutOpen && (
+                <div className="space-y-1 py-1 pl-3 pr-2">
+                  {aboutItems.map((item) => (
+                    <button
+                      key={item.path}
+                      type="button"
+                      onClick={() => handleNavigation(item.path)}
+                      className="block w-full rounded-md px-3 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
 
             <div ref={mobileAccessRef}>
               <button
+                type="button"
                 onClick={toggleMobileAccess}
                 aria-expanded={isMobileAccessOpen}
                 className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
@@ -492,6 +715,7 @@ const Navbar = () => {
                   {accessItems.map((item) => (
                     <button
                       key={item.path}
+                      type="button"
                       onClick={() => handleNavigation(item.path)}
                       className="block w-full rounded-md px-3 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                     >
@@ -504,6 +728,7 @@ const Navbar = () => {
 
             <div ref={mobileSolutionsRef}>
               <button
+                type="button"
                 onClick={toggleMobileSolutions}
                 aria-expanded={isMobileSolutionsOpen}
                 className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
@@ -531,6 +756,48 @@ const Navbar = () => {
                   {solutionItems.map((item) => (
                     <button
                       key={item.path}
+                      type="button"
+                      onClick={() => handleNavigation(item.path)}
+                      className="block w-full rounded-md px-3 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            <div ref={mobileAssessmentRef}>
+              <button
+                type="button"
+                onClick={toggleMobileAssessment}
+                aria-expanded={isMobileAssessmentOpen}
+                className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+              >
+                ASSESSMENT
+                <svg
+                  className={`h-5 w-5 transition-transform duration-200 ${
+                    isMobileAssessmentOpen ? "rotate-180" : ""
+                  }`}
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </button>
+
+              {isMobileAssessmentOpen && (
+                <div className="space-y-1 py-1 pl-3 pr-2">
+                  {assessmentItems.map((item) => (
+                    <button
+                      key={item.path}
+                      type="button"
                       onClick={() => handleNavigation(item.path)}
                       className="block w-full rounded-md px-3 py-2 text-left text-sm font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
                     >
@@ -542,13 +809,15 @@ const Navbar = () => {
             </div>
 
             <button
-              onClick={() => handleNavigation("/pricing")}
+              type="button"
+              onClick={() => handleNavigation("/insights")}
               className="block w-full rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
             >
-              PRICING
+              INSIGHTS
             </button>
 
             <button
+              type="button"
               onClick={() => handleNavigation("/faq")}
               className="block w-full rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
             >
@@ -556,13 +825,7 @@ const Navbar = () => {
             </button>
 
             <button
-              onClick={() => handleNavigation("/insights")}
-              className="flex w-full items-center justify-between rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
-            >
-              INSIGHTS
-            </button>
-
-            <button
+              type="button"
               onClick={() => handleNavigation("/contact")}
               className="block w-full rounded-md px-3 py-2 text-left text-lg font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
             >
@@ -571,6 +834,7 @@ const Navbar = () => {
 
             <div className="px-3 py-2">
               <button
+                type="button"
                 onClick={handleScheduleConsultation}
                 className="w-full rounded-md bg-[#1E2E66] px-4 py-3 text-base font-medium tracking-wide text-white shadow-lg transition-all duration-300 hover:bg-[#0d47a1]"
               >

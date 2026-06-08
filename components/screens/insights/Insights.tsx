@@ -36,19 +36,18 @@ const insightCategories = [
 export default function Insights() {
   return (
     <div className="bg-gray-50 pb-12 pt-24 text-gray-800">
-      <section className="bg-gray-50 px-6 py-20 text-center">
-        <div className="mx-auto max-w-6xl">
-          <h1 className="mb-6 text-3xl font-bold text-[#1a237e] md:text-4xl">
-            ClaimScope Insights
+      <section className="bg-gray-50 px-6 py-16 text-center">
+        <div className="max-w-6xl mx-auto">
+          <h1 className="text-3xl md:text-4xl font-bold mb-6 text-[#1a237e]">
+            ClaimScope™ Insights
           </h1>
-          <p className="mb-8 text-xl leading-relaxed text-gray-600">
-            Structured insights on documentation governance, operational
-            clarity, and documentation readiness systems across contractor, real
-            estate, and disaster environments.
+
+          <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+            Structured insights on documentation governance, operational clarity, and documentation readiness systems across contractor, real estate, and disaster environments.
           </p>
-          <div className="mx-auto inline-block max-w-2xl rounded-xl border border-orange-200 bg-orange-50 px-8 py-4 text-sm">
-            All insights are provided within a consulting-only, advisory, and
-            educational framework.
+
+          <div className="bg-orange-50 border border-orange-200 text-sm py-4 px-10 inline-block rounded-xl max-w-xl mx-auto tracking-wide">
+            All insights are provided within a consulting-only, advisory, and educational framework.
           </div>
         </div>
       </section>
@@ -133,7 +132,7 @@ export default function Insights() {
         </div>
       </section>
 
-     <footer className="bg-white text-gray-900 text-sm py-12 px-6 text-center">
+    <footer className="bg-white text-gray-900 text-sm py-12 px-6 text-center">
         <div className="max-w-7xl mx-auto">
           <p>
             ClaimScope™ Consulting, LLC provides documentation governance and readiness insights in a consulting-only capacity. 
