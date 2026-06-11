@@ -274,115 +274,154 @@ export default function AIGovernanceHumanOversight() {
               />
             </div>
           </div>
-          <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 px-4 mt-16 py-6 md:px-6">
-            <div className="mx-auto max-w-7xl">
-              <div className=" text-center">
-                <h2 className="text-3xl font-bold text-blue-900 md:text-3xl ">
-                  AI Governance Outcomes™
-                </h2>
+                 <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white px-4 py-16 md:px-6">
+  <div className="mx-auto max-w-7xl">
+    <div className=" text-center">
+     
 
-                <p className="mt-6 text-lg leading-8 text-slate-600 mx-auto max-w-5xl">
-                  Organizations that implement structured AI governance controls
-                  are better positioned to support documentation consistency,
-                  workflow accountability, governance visibility, and
-                  operational readiness.
-                </p>
-              </div>
-              <div>
-                {/* Outcomes Grid */}
-                <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                  {[
-                    "Improved Documentation Consistency",
-                    "Enhanced Human Accountability",
-                    "Increased Audit Visibility",
-                    "Stronger Workflow Governance",
-                    "Improved Documentation Traceability",
-                    "Reduced Operational Risk",
-                    "Greater Executive Visibility",
-                    "Improved Organizational Readiness",
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-lg shadow-xl"
-                    >
-                      <div className="grid grid-cols-[56px_1fr] items-center gap-4">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-lg font-bold text-blue-700">
-                          {(index + 1).toString().padStart(2, "0")}
-                        </div>
+      <h2 className="mt-5 text-3xl font-bold text-blue-900 md:text-4xl">
+        AI Governance Outcomes™
+      </h2>
 
-                        <h3 className="text-[15px] font-medium leading-7 text-slate-900 md:text-base">
-                          {item}
-                        </h3>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-               <div className="mt-12 text-center rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 px-6 py-6 text-sm text-amber-900 max-w-7xl mx-auto">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-amber-900">
-                  Enterprise Positioning Statement
-                </p>
+      <p className="mx-auto mt-5 max-w-5xl text-base leading-8 text-slate-600 md:text-lg">
+        Organizations that implement structured AI governance controls are
+        better positioned to support documentation consistency, workflow
+        accountability, governance visibility, and operational readiness.
+      </p>
+       {/* <span className="mt-6 inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">
+        Governance Outcomes
+      </span> */}
+    </div>
 
-                <p className="mt-4">
-                 AI governance is not solely a technology function. Effective governance establishes accountability structures that support operational consistency, documentation integrity, organizational transparency, and long-term continuity.
-                </p>
-              </div>
+    <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        "Improved Documentation Consistency",
+        "Enhanced Human Accountability",
+        "Increased Audit Visibility",
+        "Stronger Workflow Governance",
+        "Improved Documentation Traceability",
+        "Reduced Operational Risk",
+        "Greater Executive Visibility",
+        "Improved Organizational Readiness",
+      ].map((item, index) => (
+        <div
+          key={index}
+          className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_12px_35px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_18px_45px_rgba(15,23,42,0.12)]"
+        >
+          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+          <div className="grid grid-cols-[52px_1fr] items-center gap-4">
+            <div className="flex h-13 w-13 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-base font-bold text-blue-800">
+              {(index + 1).toString().padStart(2, "0")}
             </div>
-          </section>
-          <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 px-4 mt-16 py-6 md:px-6">
-            <div className="mx-auto max-w-7xl">
-              <div className=" text-center">
-                <h2 className="text-3xl font-bold text-blue-900 md:text-3xl ">
-                  Executive Governance Visibility™
-                </h2>
 
-                <p className="mt-6 text-lg leading-8 text-slate-600 mx-auto max-w-5xl">
-                  Executive leadership requires visibility into how AI-assisted
-                  workflows are governed, reviewed, approved, and documented
-                  throughout the operational lifecycle.
-                </p>
-              </div>
-              <div>
-                {/* Outcomes Grid */}
-                <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-                  {[
-                    "Human Review Completion Status",
-                    "Approval Workflow Compliance",
-                    "Documentation Accountability Assignments",
-                    "Governance Exception Tracking",
-                    "Audit Trail Completeness",
-                    "Documentation Consistency Monitoring",
-                    "Workflow Oversight Visibility",
-                    "Governance Control Adherence",
-                  ].map((item, index) => (
-                    <div
-                      key={index}
-                      className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-lg shadow-xl"
-                    >
-                      <div className="grid grid-cols-[56px_1fr] items-center gap-4">
-                        <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-lg font-bold text-blue-700">
-                          {(index + 1).toString().padStart(2, "0")}
-                        </div>
+            <h3 className="text-[15px] font-semibold leading-6 text-slate-900">
+              {item}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
 
-                        <h3 className="text-[15px] font-medium leading-7 text-slate-900 md:text-base">
-                          {item}
-                        </h3>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-               <div className="mt-12 text-center rounded-2xl border-2 border-orange-200 bg-gradient-to-r from-orange-50 to-amber-50 px-6 py-6 text-sm text-amber-900 max-w-7xl mx-auto">
-                <p className="text-sm font-semibold uppercase tracking-[0.18em] text-amber-900">
-                  Executive Visibility Statement
-                </p>
+    <div className="mt-14 overflow-hidden rounded-[28px] border border-blue-100 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
+      <div className="grid gap-6 p-7 md:grid-cols-[260px_1fr] md:p-9">
+        <div className="flex items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-700">
+              Enterprise Positioning
+            </p>
+            <h3 className="mt-3 text-xl font-bold leading-7 text-blue-900">
+              Governance Beyond Technology
+            </h3>
+          </div>
+        </div>
 
-                <p className="mt-4">
-                 Structured AI governance provides leadership with visibility into workflow accountability, documentation quality, governance controls, and organizational readiness indicators.
-                </p>
-              </div>
+        <div className="border-t border-slate-200 pt-5 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+          <p className="text-base leading-8 text-slate-600">
+            AI governance is not solely a technology function. Effective
+            governance establishes accountability structures that support
+            operational consistency, documentation integrity, organizational
+            transparency, and long-term continuity.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+         <section className="relative overflow-hidden bg-gradient-to-b from-white via-slate-50 to-white px-4 py-16 md:px-6">
+  <div className="mx-auto max-w-7xl">
+    <div className="mx-auto max-w-4xl text-center">
+ 
+
+      <h2 className="mt-5 text-3xl font-bold text-blue-900 md:text-4xl">
+        Executive Governance Visibility™
+      </h2>
+
+      <p className="mx-auto mt-5 max-w-5xl text-base leading-8 text-slate-600 md:text-lg">
+        Executive leadership requires visibility into how AI-assisted workflows
+        are governed, reviewed, approved, and documented throughout the
+        operational lifecycle.
+      </p>
+           {/* <span className="mt-6 inline-flex rounded-full border border-blue-200 bg-blue-50 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-blue-700">
+        Executive Visibility
+      </span> */}
+    </div>
+
+    <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+      {[
+        "Human Review Completion Status",
+        "Approval Workflow Compliance",
+        "Documentation Accountability Assignments",
+        "Governance Exception Tracking",
+        "Audit Trail Completeness",
+        "Documentation Consistency Monitoring",
+        "Workflow Oversight Visibility",
+        "Governance Control Adherence",
+      ].map((item, index) => (
+        <div
+          key={index}
+          className="group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_12px_35px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-1 hover:border-blue-200 hover:shadow-[0_18px_45px_rgba(15,23,42,0.12)]"
+        >
+          <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-blue-700 via-cyan-500 to-blue-700 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+          <div className="grid grid-cols-[52px_1fr] items-center gap-4">
+            <div className="flex h-13 w-13 items-center justify-center rounded-2xl border border-blue-100 bg-blue-50 text-base font-bold text-blue-800">
+              {(index + 1).toString().padStart(2, "0")}
             </div>
-          </section>
+
+            <h3 className="text-[15px] font-semibold leading-6 text-slate-900">
+              {item}
+            </h3>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="mt-14 overflow-hidden rounded-[28px] border border-blue-100 bg-white shadow-[0_18px_50px_rgba(15,23,42,0.08)]">
+      <div className="grid gap-6 p-7 md:grid-cols-[280px_1fr] md:p-9">
+        <div className="flex items-center">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-blue-700">
+              Executive Visibility
+            </p>
+            <h3 className="mt-3 text-xl font-bold leading-7 text-blue-900">
+              Leadership-Level Governance Insight
+            </h3>
+          </div>
+        </div>
+
+        <div className="border-t border-slate-200 pt-5 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+          <p className="text-base leading-8 text-slate-600">
+            Structured AI governance provides leadership with visibility into
+            workflow accountability, documentation quality, governance controls,
+            and organizational readiness indicators.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
           <div className="mt-10 rounded-[32px] px-6 py-10 md:px-10">
             <h2 className="text-2xl font-bold text-blue-900 md:text-3xl">
